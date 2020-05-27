@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Container,
-  Content,
-  Footer,
-  FooterTab,
-} from 'native-base';
+import { Container, Content, Footer, FooterTab } from 'native-base';
 import { observer } from 'mobx-react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StyleSheet, Image } from 'react-native';
@@ -31,7 +26,7 @@ const styles = StyleSheet.create({
     marginBottom: 'auto',
     marginLeft: 'auto',
     marginRight: 'auto',
-  }
+  },
 });
 
 export const Home: React.FC<Props> = () => {
@@ -40,16 +35,12 @@ export const Home: React.FC<Props> = () => {
       <Content contentContainerStyle={styles.container}>
         {/* eslint-disable-next-line global-require */}
         <Image source={require('../../assets/icon.png')} style={styles.logo} />
-        
       </Content>
       <Footer>
-        <FooterTab>
-        </FooterTab>
+        <FooterTab />
       </Footer>
     </Container>
   );
 };
 
-export default observer((props) =>
-  Home({ stores: useStores(), ...props })
-);
+export default observer((props) => Home({ stores: useStores(), ...props }));

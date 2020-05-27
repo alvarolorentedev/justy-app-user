@@ -11,13 +11,11 @@ describe('<Home />', () => {
     navigate: jest.fn(),
   };
 
-
   beforeEach(() => {
     navigation.navigate.mockClear();
   });
 
-test('should ', () => {
-    const wrapper = shallow(<Home navigation={navigation} />)
-});
-
+  test('should ', () => {
+    const wrapper = shallow(<Home navigation={navigation} />);
+  });
 });

@@ -9,18 +9,19 @@ import Home from './src/views/home';
 
 const Stack = createStackNavigator();
 
+/* eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types */
 export default (App) => {
   const [ready, setReady] = useState(false);
   useEffect(() => {
     (async () => {
       try {
-        /* eslint-disable global-require, @typescript-eslint/camelcase */
+        /* eslint-disable global-require */
         await Font.loadAsync({
           Roboto: require('native-base/Fonts/Roboto.ttf'),
           Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
           ...Ionicons.font,
         });
-        /* eslint-enable global-require, @typescript-eslint/camelcase */
+        /* eslint-enable global-require */
       } catch (error) {
         /* eslint-disable-next-line no-console */
         console.log(error);

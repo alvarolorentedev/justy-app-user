@@ -1,9 +1,6 @@
 import React from 'react';
 
-export type Store = {
+/* eslint-disable-next-line @typescript-eslint/ban-types */
+export type Store = {};
 
-};
-
-export const storesContext = React.createContext<Store>({
-
-});
+export const storesContext = React.createContext<Store>({});
