@@ -18,6 +18,7 @@ describe('<Home />', () => {
   const expectedPassword: string = faker.internet.password();
   const expectedEmail: string = faker.internet.email();
 
+
   beforeEach(() => {
     mockBuyerStore.error = undefined;
     navigation.navigate.mockClear();
@@ -66,7 +67,7 @@ describe('<Home />', () => {
     });
   });
 
-  describe.skip('button submit enable/disable state', () => {
+  describe('button submit enable/disable state', () => {
     const wrapper = shallow(
       <Home navigation={navigation} buyerStore={mockBuyerStore} />
     );
@@ -79,7 +80,6 @@ describe('<Home />', () => {
     test('should be enable when mandatory fields are set', async () => {
       const buyerEmailInput = wrapper.find('[data-testid="buyer-email-input"]');
       buyerEmailInput.prop('onChangeText')(expectedEmail);
-      wrapper.update();
       const buyerPasswordInput = wrapper.find(
         '[data-testid="buyer-password-input"]'
       );
@@ -89,10 +89,9 @@ describe('<Home />', () => {
       expect(createButton.prop('disabled')).toBeFalsy();
     });
 
-    test('should be disable when email mandatory fields is unset', () => {
+    test('should be disable when email mandatory fields is unset', async () => {
       const buyerEmailInput = wrapper.find('[data-testid="buyer-email-input"]');
       buyerEmailInput.prop('onChangeText')(undefined);
-      wrapper.update();
       const buyerPasswordInput = wrapper.find(
         '[data-testid="buyer-password-input"]'
       );
@@ -102,10 +101,9 @@ describe('<Home />', () => {
       expect(createButton.prop('disabled')).toBeTruthy();
     });
 
-    test('should be disable when password mandatory fields is unset', () => {
+    test('should be disable when password mandatory fields is unset', async () => {
       const buyerEmailInput = wrapper.find('[data-testid="buyer-email-input"]');
       buyerEmailInput.prop('onChangeText')(expectedEmail);
-      wrapper.update();
       const buyerPasswordInput = wrapper.find(
         '[data-testid="buyer-password-input"]'
       );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Content,
@@ -14,7 +14,7 @@ import {
 } from 'native-base';
 import { observer } from 'mobx-react';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, Alert } from 'react-native';
 import useStores from '../utils/useStores';
 import BuyerStore from '../stores/buyer';
 
@@ -64,7 +64,10 @@ export const Home: React.FC<Props> = ({ navigation, buyerStore }: Props) => {
     if (!buyerStore.error) navigation.navigate('Search');
     else Toast.show({ text: buyerStore.error, buttonText: 'Okay' });
   };
-  const validForm = () => {
+  useEffect(() => {
+    validateForm()
+  }, [email, password]);
+  function validateForm() {
     if (email && password) {
       setReadyForCreate(true);
     } else {
@@ -73,11 +76,9 @@ export const Home: React.FC<Props> = ({ navigation, buyerStore }: Props) => {
   };
   const UpdateEmail = (emailInput) => {
     setEmail(emailInput);
-    validForm();
   };
   const UpdatePassword = (passwordInput) => {
     setPassword(passwordInput);
-    validForm();
   };
   return (
     <Container>
