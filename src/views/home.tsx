@@ -64,22 +64,22 @@ export const Home: React.FC<Props> = ({ navigation, buyerStore }: Props) => {
     if (!buyerStore.error) navigation.navigate('Search');
     else Toast.show({ text: buyerStore.error, buttonText: 'Okay' });
   };
-  useEffect(() => {
-    validateForm()
-  }, [email, password]);
   function validateForm() {
     if (email && password) {
       setReadyForCreate(true);
     } else {
       setReadyForCreate(false);
     }
-  };
+  }
   const UpdateEmail = (emailInput) => {
     setEmail(emailInput);
   };
   const UpdatePassword = (passwordInput) => {
     setPassword(passwordInput);
   };
+  useEffect(() => {
+    validateForm();
+  }, [email, password]);
   return (
     <Container>
       <Content contentContainerStyle={styles.container}>

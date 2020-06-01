@@ -18,7 +18,6 @@ describe('<Home />', () => {
   const expectedPassword: string = faker.internet.password();
   const expectedEmail: string = faker.internet.email();
 
-
   beforeEach(() => {
     mockBuyerStore.error = undefined;
     navigation.navigate.mockClear();

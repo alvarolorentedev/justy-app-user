@@ -1,7 +1,7 @@
 import * as faker from 'faker';
 import { createBuyer } from '../../src/services/buyer';
 import BuyerStore from '../../src/stores/buyer';
-import { SimpleResponse } from '../../src/types/simpleResponse';
+import { SimpleResponse } from '../../src/types/SimpleResponse';
 
 jest.mock('../../src/services/buyer', () => ({
   __esModule: true,
@@ -16,12 +16,10 @@ describe('Buyer Store', () => {
   });
 
   describe('has action for create account', () => {
-
     const email: string = faker.random.uuid();
     const password: string = faker.random.uuid();
 
     it('should return if success creating accout', async () => {
-
       (createBuyer as jest.Mock<Promise<SimpleResponse>>).mockReturnValue(
         Promise.resolve({ success: true })
       );
