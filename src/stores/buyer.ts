@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx';
+import { createBuyer } from '../services/buyer';
 
 export default class BuyerStore {
   @observable
@@ -6,6 +7,13 @@ export default class BuyerStore {
 
   @action
   create = async (email: string, password: string): Promise<void> => {
-    throw Error('Not Implemented');
+    try {
+      const result = await createBuyer(email, password);
+      if (result.success) {
+        this.error = undefined;
+      } else throw new Error('Unable to create accout');
+    } catch (error) {
+      this.error = error.message;
+    }
   };
 }
