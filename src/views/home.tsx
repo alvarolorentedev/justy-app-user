@@ -60,7 +60,7 @@ export const Home: React.FC<Props> = ({ navigation, buyerStore }: Props) => {
   const [readyForCreate, setReadyForCreate] = useState(false);
 
   const createUser = async () => {
-    buyerStore.create(email, password);
+    await buyerStore.create(email, password);
     if (!buyerStore.error) navigation.navigate('Search');
     else Toast.show({ text: buyerStore.error, buttonText: 'Okay' });
   };
@@ -114,9 +114,6 @@ export const Home: React.FC<Props> = ({ navigation, buyerStore }: Props) => {
           <Text>Create User</Text>
         </Button>
       </Content>
-      <Footer>
-        <FooterTab />
-      </Footer>
     </Container>
   );
 };
