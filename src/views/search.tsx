@@ -40,4 +40,4 @@ export const Search: React.FC<Props> = () => {
   );
 };
 
-export default observer((props) => Search       ({ stores: useStores(), ...props }));
+export default observer((props) => Search({ stores: useStores(), ...props }));
